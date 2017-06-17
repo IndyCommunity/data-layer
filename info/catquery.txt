@@ -1,0 +1,6 @@
+Labels to use:
+
+WHERE (raw_land_use.use14_label = 'Light industrial' OR raw_land_use.use14_label = 'Heavy Industrial' OR raw_land_use.use14_label = 'Community Commercial' OR raw_land_use.use14_label = 'Heavy Commercial' OR raw_land_use.use14_label = 'Place of Worship' OR raw_land_use.use14_label = 'Office') AND raw_land_use.state = 'IN' AND raw_land_use.city = 'INDIANAPOLIS'
+
+
+landuse_id int, crime_id int
