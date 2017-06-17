@@ -1,6 +1,16 @@
 const query = require('./query');
 
 function getCrimeAmountWithinRange(lowLat,highLat,lowLong,highLong,callback) {
+    // query.queryData(`
+    //     SELECT address_cords.address, address_cords.latitude, address_cords.longitude, raw_crime.crime
+    //     FROM raw_crime 
+    //     INNER JOIN address_cords
+    //     ON address_cords.address = raw_crime.address
+    //     AND address_cords.latitude > ${lowLat} AND address_cords.latitude < ${highLat} AND ABS(address_cords.longitude) > ${highLong}  AND ABS(address_cords.longitude) < ${lowLong} 
+    // `)
+}
+
+function getBusinessesInRegion(lowLat,highLat,lowLong,highLong,callback) {
     
 }
 
@@ -22,7 +32,8 @@ function getCoordinatesForZone(zone,callback) {
         FROM raw_land_use 
         INNER JOIN address_cords
         ON address_cords.address = CONCAT(CAST(raw_land_use.stnumber AS VARCHAR), ' ', raw_land_use.full_stname)
-        AND raw_land_use.use14_label = '${zone}';
+        AND raw_land_use.use14_label = '${zone}'
+        LIMIT 200;
     `,function(err,results) {
         let coordinateData = [];
         results.shift();
