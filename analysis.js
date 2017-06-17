@@ -37,8 +37,28 @@ function getCoordinatesForZone(zone,callback) {
     });
 }
 
-function getCrimeLatLongWithinRange(lowLat,highLat,lowLong,highLong,callback) {
+function getCoordinatesForCrimes(callback) {
+    query.queryData(`
+        SELECT address_cords.address, address_cords.latitude, address_cords.longitude, raw_crime.crime
+        FROM raw_crime 
+        INNER JOIN address_cords
+        ON address_cords.address = raw_crime.address
+    `,function(err,results) {
+        let coordinateData = [];
+        results.shift();
+        results.forEach(function(result) {
+            let coordinate = {
+                lat: result.Data[1].VarCharValue,
+                long: result.Data[2].VarCharValue,
+            }
+            coordinateData.push(coordinate);
+        })
+        callback(err,coordinateData);
+    });
+}
 
+function getCrimeLatLongWithinRange(lowLat,highLat,lowLong,highLong,callback) {
+    
 }
 
 function getCrimeLatLongWithinRangeWithinYear(lowLat,highLat,lowLong,highLon,callback) {
@@ -52,3 +72,4 @@ module.exports.getCrimeChartData = getCrimeChartData;
 module.exports.getCrimeLatLongWithinRange = getCrimeLatLongWithinRange;
 module.exports.getCrimeLatLongWithinRangeWithinYear = getCrimeAmountWithinRangeWithinYear;
 module.exports.getCoordinatesForZone = getCoordinatesForZone;
+module.exports.getCoordinatesForCrimes = getCoordinatesForCrimes;
