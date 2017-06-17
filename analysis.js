@@ -1,24 +1,24 @@
-function getCrimeAmountWithinRange(lowLat,highLat,lowLong,highLong) {
+function getCrimeAmountWithinRange(lowLat,highLat,lowLong,highLong,callback) {
 
 }
 
-function getCrimeAmountWithinRangeWithinYear(lowLat,highLat,lowLong,highLong) {
+function getCrimeAmountWithinRangeWithinYear(lowLat,highLat,lowLong,highLong,callback) {
 
 }
 
-function getTotalCrimeAmountByYear(year) {
+function getTotalCrimeAmountByYear(year,callback) {
 
 }
 
-function getCrimeChartData() {
+function getCrimeChartData(callback) {
 
 }
 
-function getCrimeLatLongWithinRange(lowLat,highLat,lowLong,highLong) {
+function getCrimeLatLongWithinRange(lowLat,highLat,lowLong,highLong,callback) {
 
 }
 
-function getCrimeLatLongWithinRangeWithinYear(lowLat,highLat,lowLong,highLong) {
+function getCrimeLatLongWithinRangeWithinYear(lowLat,highLat,lowLong,highLon,callback) {
 
 }
 
