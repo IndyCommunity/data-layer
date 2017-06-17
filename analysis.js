@@ -35,10 +35,10 @@ function getCoordinatesForZone(zone,callback) {
         AND raw_land_use.use14_label = '${zone}'
         LIMIT 200;
     `,function(err,results) {
-        let coordinateData = [];
+        var coordinateData = [];
         results.shift();
         results.forEach(function(result) {
-            let coordinate = {
+            var coordinate = {
                 lat: result.Data[1].VarCharValue,
                 long: result.Data[2].VarCharValue,
             }
@@ -55,10 +55,10 @@ function getCoordinatesForCrimes(callback) {
         INNER JOIN address_cords
         ON address_cords.address = raw_crime.address
     `,function(err,results) {
-        let coordinateData = [];
+        var coordinateData = [];
         results.shift();
         results.forEach(function(result) {
-            let coordinate = {
+            var coordinate = {
                 lat: result.Data[1].VarCharValue,
                 long: result.Data[2].VarCharValue,
             }

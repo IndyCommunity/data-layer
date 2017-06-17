@@ -1,6 +1,6 @@
 const query = require('./query');
 
-let categoryColors = {};
+var categoryColors = {};
 categoryColors['Light Industrial'] = '#275DCA';
 categoryColors['Heavy Industrial'] = '#CA2776';
 categoryColors['Community Commercial'] = '#FBF41C';
@@ -183,9 +183,9 @@ function scoreZoneInRegion(zone,coordinates,index,callback) {
 
 function findBestZoneForRegion(zone,callback) {
     const scores = {};
-    let scoreCount = 0;
-    let min = 1000000;
-    let minIndex = 0;
+    var scoreCount = 0;
+    var min = 1000000;
+    var minIndex = 0;
     for(var i = 0; i < 4; i++) {
         scoreZoneInRegion('Community Commercial',mapData.features[i].geometry.coordinates,i,function(err,index,results) {
             console.log(index,results);
@@ -206,7 +206,7 @@ function findBestZoneForRegion(zone,callback) {
 }
 
 function getGeoJSONForRegionIndex(index,zone) {
-    let data = {
+    var data = {
         type: 'FeatureCollection',
         features: [
             {
@@ -230,3 +230,7 @@ function getGeoJSONForRegionIndex(index,zone) {
     data.features[0].properties.fill = categoryColors[zone];
     return JSON.stringify(data);
 }
+
+module.exports.getGeoJSONForRegionIndex = getGeoJSONForRegionIndex;
+module.exports.findBestZoneForRegion = findBestZoneForRegion;
+module.exports.scoreZoneInRegion = scoreZoneInRegion;
